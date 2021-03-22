@@ -1,0 +1,114 @@
+commit f438ea01a70691bd9372d662b7f47cb49733a90e
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 19:44:42 2021 +0200
+
+    Lisäystä ja poistoja
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ tiedostoja/file3             | 1 +
+ 3 files changed, 1 insertion(+)
+
+commit 102637845ad0e6193225074d86efe464967bb276
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 19:30:58 2021 +0200
+
+    Lisätty tiedostoja 3 kpl
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 996a9aec4004350ba98c6837e5c94309afe294cd
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 19:22:19 2021 +0200
+
+    Lisätty -p vivulla
+
+ eka.txt    | 11 +++++------
+ kolmas.txt | 50 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 54 insertions(+), 7 deletions(-)
+
+commit e48cdbe531eb7bdacd761d4db9f0d6c266bc624d
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 19:18:27 2021 +0200
+
+    Muokattu tiedoston nimeä
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit bf1f006d1585046e39f72c52db0aad8188aa4db8
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 19:17:42 2021 +0200
+
+    Poistettu toinen tiedosto
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit e774f7ff4a9c942d741df5db2fb28a0d019a2bc0
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 19:15:04 2021 +0200
+
+    Muokattu latinaa
+
+ tiedosto.txt | 42 +++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 41 insertions(+), 1 deletion(-)
+
+commit e7a5d7a1a83b5dca65dcc7f203813999443401e2
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 19:12:31 2021 +0200
+
+    Lisätty lorem ipsum
+
+ tiedosto.txt | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+commit 7b412c72e0b9134c491513bda27d7808bb619428
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 19:07:32 2021 +0200
+
+    Lisätty hakemisto ja tiedosto
+
+ stuff/foo.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 735103b692d6281afebb3b03b7b56c31e16104db
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 19:06:12 2021 +0200
+
+    Muutoksia tiedostoihin
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit fe4901122ce3f45b950e88e52d5d4f907158b131
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 19:05:19 2021 +0200
+
+    Lisätty kolmas tiedosto
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 7f881c926bc22985177aef4909ce3c1baa03dd44
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 18:38:44 2021 +0200
+
+    Muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 0d484bbd9fa60405e34a54ddd683256d76930eee
+Author: Anna-Reetta Julkunen <ar.julkunen@gmail.com>
+Date:   Mon Mar 22 18:37:12 2021 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
