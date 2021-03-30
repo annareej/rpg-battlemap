@@ -25,11 +25,24 @@ public class MaksukorttiTest {
         assertEquals("saldo: "+euroa+"."+senttia, kortti.toString());
     }
     
+    @Test
     public void saldoKasvaaOikein() {
         kortti.lataaRahaa(10);
         int euroa = 20/100;
         int senttia = 20%100;
         assertEquals("saldo: "+euroa+"."+senttia, kortti.toString());
+    }
+    
+    @Test
+    public void saldoVaheneeOikeinKunRahaRiittaa() {
+        boolean b = kortti.otaRahaa(5);
+        assertEquals(true, b);
+    }
+    
+    @Test
+    public void saldoEiVaheneKunRahaEiRiita() {
+        boolean b = kortti.otaRahaa(15);
+        assertEquals(false, b);
     }
     
 }
