@@ -17,4 +17,19 @@ public class MaksukorttiTest {
     public void luotuKorttiOlemassa() {
         assertTrue(kortti!=null);      
     }
+    
+    @Test
+    public void konstruktoriAsettaaSaldonOikein() {
+        int euroa = 10/100;
+        int senttia = 10%100;
+        assertEquals("saldo: "+euroa+"."+senttia, kortti.toString());
+    }
+    
+    public void saldoKasvaaOikein() {
+        kortti.lataaRahaa(10);
+        int euroa = 20/100;
+        int senttia = 20%100;
+        assertEquals("saldo: "+euroa+"."+senttia, kortti.toString());
+    }
+    
 }
