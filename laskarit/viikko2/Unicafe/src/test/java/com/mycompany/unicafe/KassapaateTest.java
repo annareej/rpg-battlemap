@@ -138,6 +138,7 @@ public class KassapaateTest {
         assertEquals(100500, kassa.kassassaRahaa());
     }
     
+    @Test
     public void negatiivisenSummanLaittaminenKortilleEiKasvataKassaa() {
         kassa.lataaRahaaKortille(koyha, -500);
         assertEquals(100000, kassa.kassassaRahaa());
