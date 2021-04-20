@@ -10,8 +10,8 @@ public class Grid {
         this.width = width;
         this.height = height;
         
-        for(int i=0; i < height; i++){
-            for(int j = 0; j < width; j++) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 addSquare(i, j, new Square(i, j));               
             }
         }
@@ -25,7 +25,7 @@ public class Grid {
         this.grid = grid;
     }
     
-    public Square getSquare(int y, int x){
+    public Square getSquare(int y, int x) {
         return this.grid[y][x];
     }
     
