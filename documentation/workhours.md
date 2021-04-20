@@ -7,4 +7,5 @@ Date | Time | Assignment
 13.4. | 3h | Basic software structure
 14.4. | 4h | Token creation
 19.4. | 5h | Improved token creation with color and size
-Sum | 14h |
+20.4. | 2h | Documentation and checking that everything works.
+Sum | 16h |
