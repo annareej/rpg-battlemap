@@ -2,7 +2,7 @@
 
 Date | Time | Assignment
 -----|------|-----------
-30.3. | 1h | Requirements spesification
+30.3. | 1h | Requirements specification
 12.4. |	1h | Basic software structure
 13.4. | 3h | Basic software structure
 14.4. | 4h | Token creation
