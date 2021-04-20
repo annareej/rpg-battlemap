@@ -1,4 +1,4 @@
 # Software architecture
 
 ## Classes
-![Class diagrma](documentation/classdiagram.png)
+![Class diagram](/documentation/classdiagram.png)
