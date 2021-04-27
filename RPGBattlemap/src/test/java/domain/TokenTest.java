@@ -18,7 +18,7 @@ public class TokenTest {
     
     @Before
     public void setUp() {
-        grid = new Grid(5,5);
+        grid = new Grid(5, 5, 100);
         medium = new Token(grid.getSquare(2, 2), 1, new Circle());
         large = new Token(grid.getSquare(0, 0), 2, new Circle());
         huge = new Token(grid.getSquare(0, 0), 3, new Circle());

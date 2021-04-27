@@ -37,24 +37,33 @@ public class Token {
     public void setShape(Circle shape) {
         this.shape = shape;
     }
-    
-    public void setCircleInPosition(Color colour) {
-        double radius = 50 * this.size;
+
+    public void createToken(Color colour, int squareSize) {
+        double radius = squareSize/2 * this.size;
         
-        setCircleCenter();
+        drawToken(squareSize);
         this.shape.setRadius(radius);
         this.shape.setFill(colour);
     }
     
-    private void setCircleCenter() {
-        int x = this.position.getX() * 100;
-        int y = this.position.getY() * 100;
-        if (this.size % 2 != 0) {
-            x += 50;
-            y += 50;
+    public void drawToken(int squareSize) {
+        double x = getSquarePixelCoordinate(this.position.getPixelCoordinateX(), squareSize);
+        double y = getSquarePixelCoordinate(this.position.getPixelCoordinateY(), squareSize);
+        
+        draw(x, y);
+    }
+    
+    private double getSquarePixelCoordinate(double coordinate, int squareSize) {
+        //Sizes medium (1) and huge (3) are positioned in center of square
+        if(this.size % 2 != 0) {
+            coordinate += squareSize / 2;            
         }
-        this.shape.setCenterX(x);
-        this.shape.setCenterY(y);
+        return coordinate;
+    }
+    
+    public void draw(double x, double y) {
+        this.shape.setTranslateX(x);
+        this.shape.setTranslateY(y);
     }
     
     public void moveUp(Grid grid) {

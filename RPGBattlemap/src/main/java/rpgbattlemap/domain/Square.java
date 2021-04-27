@@ -5,12 +5,14 @@ import javafx.scene.shape.Rectangle;
 public class Square {
     private int x;
     private int y;
+    private final int squareSize;
     private Rectangle rectangle;
     
-    public Square(int y, int x) {
+    public Square(int y, int x, int squareSize) {
         this.x = x;
         this.y = y;
-        this.rectangle = new Rectangle(y * 100, x * 100, 100, 100);
+        this.squareSize = squareSize;
+        this.rectangle = new Rectangle(y * squareSize, x * squareSize, squareSize, squareSize);
     }
 
     public int getX() {
@@ -35,5 +37,13 @@ public class Square {
 
     public void setRectangle(Rectangle rectangle) {
         this.rectangle = rectangle;
+    }
+    
+    public double getPixelCoordinateX() {
+        return this.x * squareSize;
+    }
+    
+    public double getPixelCoordinateY() {
+        return this.y * squareSize;
     }
 }
