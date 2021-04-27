@@ -10,5 +10,5 @@ Date | Time | Assignment
 20.4. | 2h | Documentation and checking that everything works.
 26.4. | 3h | Token creation on mouse point.
 26.4  | 2h | Draggin token with mouse.
-28.4. | 4h | Continue token movin.
+27.4. | 4h | Continue token movin.
 Sum | 22h |
