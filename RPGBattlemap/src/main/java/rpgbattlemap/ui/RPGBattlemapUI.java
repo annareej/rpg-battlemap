@@ -3,7 +3,8 @@ package rpgbattlemap.ui;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.beans.binding.Bindings;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,12 +14,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import rpgbattlemap.domain.Grid;
@@ -43,18 +47,21 @@ public class RPGBattlemapUI extends Application{
     }
     
     public Scene createSizeScene() {
-        Label label = new Label("Size");
-        VBox sizePane = new VBox(label);
+        GridPane pane = new GridPane();
+        Text sizeText = new Text("Grid");
+        sizeText.setFont(Font.font(15));
+        pane.add(sizeText, 0, 0);
         
-        HBox widthInputPane = new HBox(10);
-        HBox heigthInputPane = new HBox(10);
-        VBox colourInputPane = new VBox(10);
         
         Label widthLabel = new Label("width");
         TextField widthInput = new TextField();
+        pane.add(widthLabel, 0, 1);
+        pane.add(widthInput, 1, 1);
         
         Label heightLabel = new Label("height");
         TextField heightInput = new TextField();
+        pane.add(heightLabel, 0, 2);
+        pane.add(heightInput, 1, 2);
         
         Label backgroundColourLabel = new Label("Background colour");
         ColorPicker backgroundColour = new ColorPicker();
@@ -63,21 +70,29 @@ public class RPGBattlemapUI extends Application{
         ColorPicker gridColour = new ColorPicker();
         gridColour.setValue(Color.BLACK);
         
-        widthInputPane.getChildren().addAll(widthLabel ,widthInput);
-        heigthInputPane.getChildren().addAll(heightLabel, heightInput);
-        colourInputPane.getChildren().addAll(backgroundColourLabel, backgroundColour, gridColourLabel, gridColour);
+        pane.add(backgroundColourLabel, 0, 3);
+        pane.add(backgroundColour, 1, 3);
+        
+        pane.add(gridColourLabel, 0, 4);
+        pane.add(gridColour, 1, 4);
         
         Button createGridButton = new Button("Create");
         createGridButton.setOnAction(e -> {
             int width = Integer.parseInt(widthInput.getText());
             int height = Integer.parseInt(heightInput.getText());
             
-            stage.setScene(createGridScene(width, height, backgroundColour.getValue(), gridColour.getValue()));
+            stage.setScene(createGridScene(width, height, backgroundColour.getValue(), 
+                    gridColour.getValue()));
         });
         
-        sizePane.getChildren().addAll(widthInputPane, heigthInputPane, colourInputPane, 
-                createGridButton);
-        Scene sizeScene = new Scene(sizePane);
+        pane.add(createGridButton, 0, 5);
+        
+        pane.setMinSize(400, 200);
+        pane.setPadding(new Insets(10,10,10,10));
+        pane.setAlignment(Pos.CENTER);
+        pane.setVgap(5);
+        pane.setHgap(5);
+        Scene sizeScene = new Scene(pane);
         
         return sizeScene;
     }
@@ -90,8 +105,11 @@ public class RPGBattlemapUI extends Application{
         Button tokenButton = new Button("Token");
         Label helpLabel = new Label("Click on grid to create token.");
         helpLabel.setVisible(createTokenMode);
+        
         VBox tokenControls = new VBox(tokenColourPicker, sizeDdl, tokenButton, 
             helpLabel);
+        tokenControls.setPadding(new Insets(10, 10, 10, 10));
+        tokenControls.setSpacing(5);
         
         ScrollPane scrollPane = new ScrollPane();
         Pane gridPane = createGrid(height, width, backgroundColour, gridColour);
@@ -105,15 +123,8 @@ public class RPGBattlemapUI extends Application{
         
         gridPane.setOnMouseClicked((MouseEvent event) -> {
             if (createTokenMode) {
-                int colIndex = 0;
-                if(event.getSceneX() >= 100)
-                    colIndex = (int)event.getSceneX()/squareSize;
-                
-                int rowIndex = 0;
-                if(event.getSceneY() >= 100)
-                    rowIndex = (int)event.getSceneY()/squareSize;   
-                
-                Square square = grid.getSquareFromMousePosition(event.getSceneY(), event.getSceneX(), squareSize);
+                Square square = grid.getSquareFromMousePosition(event.getSceneY(), 
+                        event.getSceneX(), squareSize);
                 Size size = (Size) sizeDdl.getValue();
                 drawToken(gridPane, square, size.getSize(), tokenColourPicker.getValue());
                 createTokenMode = false;
@@ -164,38 +175,20 @@ public class RPGBattlemapUI extends Application{
     public void drawToken(Pane gridPane, Square square, int size, Color colour) {
         Circle circle = new Circle();
         Token token = new Token(square, size, circle);
-        token.createToken(colour, squareSize);
+        UITokenControls.createToken(token, colour, squareSize);
         
-        circle.setOnMousePressed(e -> tokenPressed(e, token));
-        circle.setOnMouseDragged(e -> tokenDragged(e, token));
-        circle.setOnMouseReleased(e -> tokenReleased(e, token));
+        circle.setOnMousePressed(e -> UITokenControls.tokenPressed(e, token));
+        circle.setOnMouseDragged(e -> UITokenControls.tokenDragged(e, token));
+        circle.setOnMouseReleased(e -> UITokenControls.tokenReleased(e, token, 
+                this.grid, this.squareSize));
         
         gridPane.getChildren().add(token.getShape());
-    }
-    
-    public void tokenPressed(MouseEvent event, Token token){
-        token.getShape().setOpacity(0.8);
-    }
-
-    private void tokenDragged(MouseEvent e, Token token) {
-        System.out.println(e.getSceneX() + " " + e.getSceneY());
-        
-        token.draw(e.getSceneX()-token.getShape().getCenterX(), e.getSceneY()-token.getShape().getCenterY());
-    }
-    
-    public void tokenReleased(MouseEvent event, Token token) {
-        Square s = grid.getSquareFromMousePosition(event.getSceneY(), event.getSceneX(), squareSize);
-        token.setPosition(s);
-        
-        token.drawToken(squareSize);
-        token.getShape().setOpacity(1);
     }
     
     public static void main(String[] args) {
         launch(args);
     }
 
-    
     private static class Size {
         private int size;
         private String name;

@@ -1,7 +1,5 @@
 package rpgbattlemap.domain;
 
-import java.util.ArrayList;
-
 public class Grid {
     private Square[][] grid;
     private int width;
@@ -61,6 +59,14 @@ public class Grid {
         if (y >= 100) {
             rowIndex = (int) y / squareSize;
         }
+        
+        if (colIndex >= width) {
+            colIndex = width - 1;
+        }
+        
+        if(rowIndex >= height)
+            rowIndex = height - 1;
+        
         
         return getSquare(colIndex, rowIndex);
     }

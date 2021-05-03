@@ -38,4 +38,16 @@ public class GridTest {
         Square s = grid.getSquareFromMousePosition(153.5, 50.2, squareSize);
         assertEquals(0, s.getX());
     }
+    
+    @Test
+    public void getLastSquareYFromMousePositionIfOutsideGrid() {
+        Square s = grid.getSquareFromMousePosition(544.2, 350.2, squareSize);
+        assertEquals(4, s.getY());
+    }
+    
+    @Test
+    public void getLastSquareXFromMousePositionIfOutsideGrid() {
+        Square s = grid.getSquareFromMousePosition(153.5, 650.2, squareSize);
+        assertEquals(4, s.getX());
+    }
 }

@@ -1,6 +1,5 @@
 package rpgbattlemap.domain;
 
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Token {
@@ -38,34 +37,6 @@ public class Token {
         this.shape = shape;
     }
 
-    public void createToken(Color colour, int squareSize) {
-        double radius = squareSize/2 * this.size;
-        
-        drawToken(squareSize);
-        this.shape.setRadius(radius);
-        this.shape.setFill(colour);
-    }
-    
-    public void drawToken(int squareSize) {
-        double x = getSquarePixelCoordinate(this.position.getPixelCoordinateX(), squareSize);
-        double y = getSquarePixelCoordinate(this.position.getPixelCoordinateY(), squareSize);
-        
-        draw(x, y);
-    }
-    
-    private double getSquarePixelCoordinate(double coordinate, int squareSize) {
-        //Sizes medium (1) and huge (3) are positioned in center of square
-        if(this.size % 2 != 0) {
-            coordinate += squareSize / 2;            
-        }
-        return coordinate;
-    }
-    
-    public void draw(double x, double y) {
-        this.shape.setTranslateX(x);
-        this.shape.setTranslateY(y);
-    }
-    
     public void moveUp(Grid grid) {
         Square old = this.position;
         if (this.position.getY() - 1 > 0) {
