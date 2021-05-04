@@ -48,6 +48,11 @@ public class Token {
         this.colour = colour;
     }
 
+    /**
+     * Move token up a square on given grid.
+     * 
+     * @param grid Grid to get the square above of current position.
+     */
     public void moveUp(Grid grid) {
         Square old = this.position;
         if (this.position.getY() - 1 >= 0) {
@@ -55,6 +60,11 @@ public class Token {
         }
     }
 
+    /**
+     * Move token down a square on given grid.
+     * 
+     * @param grid Grid to get the square below of current position.
+     */
     public void moveDown(Grid grid) {
         Square old = this.position;
         if (this.position.getY() + 1 < grid.getHeight()) {
@@ -62,6 +72,11 @@ public class Token {
         }
     }
 
+    /**
+     * Move token right on given grid.
+     * 
+     * @param grid Grid to get the square left of current position.
+     */
     public void moveRight(Grid grid) {
         Square old = this.position;
         if (this.position.getX() + 1 < grid.getWidth()) {
@@ -69,6 +84,11 @@ public class Token {
         }
     }
     
+    /**
+     * Move token left a square on given grid.
+     * 
+     * @param grid Grid to get the square above of current position.
+     */
     public void moveLeft(Grid grid) {
         Square old = this.position;
         if (this.position.getX() - 1 >= 0) {

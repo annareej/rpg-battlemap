@@ -44,6 +44,12 @@ public class UITokenControls {
         token.getShape().setFill(colour);
     }
 
+    /**
+     * Draw a token.
+     * 
+     * @param token Token that is being drawn.
+     * @param squareSize Size of a grid square. 
+     */
     public static void drawToken(Token token, int squareSize) {
         double x = centerToken(token,
                 token.getPosition().getPixelCoordinateX(), squareSize);
@@ -54,6 +60,14 @@ public class UITokenControls {
         draw(token, x, y);
     }
 
+    /**
+     * Calculates center coordinate of token. 
+     * Sizes medium (1) and huge (3) have center coordinates in center of square.
+     * 
+     * @param  token Token that is being centered.
+     * @param coordinate Coordinate of token.
+     * @param squareSize squareSize of the grid. Is used to calculate the center of the square.
+     */
     private static double centerToken(Token token, double coordinate, int squareSize) {
         //Sizes medium (1) and huge (3) have center coordinates in center of square
         if (token.getSize() % 2 != 0) {
@@ -61,7 +75,14 @@ public class UITokenControls {
         }
         return coordinate;
     }
-
+ 
+    /**
+     * Set the coordinates on screen of the shape of given token.
+     * 
+     * @param token Token that is being drawn.
+     * @param x x coordinate for the shape.
+     * @param y y coordinate for the shape.
+     */
     public static void draw(Token token, double x, double y) {
         token.getShape().setTranslateX(x);
         token.getShape().setTranslateY(y);
