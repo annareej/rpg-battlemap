@@ -27,7 +27,7 @@ mvn jacoco:report
 Generated report is located in _target/site/jacoco/index.html_ and can be opened with a browser.
 
 ### Jar file
-A excecutable jar file is generated with command
+An executable jar file is generated with command
 ```
 mvn package
 ```
@@ -36,6 +36,13 @@ Generated jar file is located in _target/_ and is named _RPGBattlemap-1.0-SNAPSH
 ```
 java -jar RPGBattlemap-1.0-SNAPSHOT.jar
 ```
+
+### Javadoc
+Javadoc can be generated with command
+```
+mvn javadoc:javadoc
+```
+Generated document is located in _target/site/apidocs/index.html_
 
 ### Checkstyle
 The style checking is configured in file [checkstyle.xml](https://github.com/annareej/rpg-battlemap/blob/master/RPGBattlemap/pom.xml). The checks are run with command
