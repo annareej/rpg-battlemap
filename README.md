@@ -3,7 +3,7 @@ _This is a practice project for university **software engineering** course._
 
 It is common for Dungeon Masters or Game Master running tabletop roleplaying games (TTRPG) to simulate and keep track combat encounters with a battlemap or grid. Grid usually is made from 5x5 ft. squares. Player and non player characters are usually marked with tokens or miniatures.  
 
-The software will generated a grid of squares with given width and heigth. Tokens can be created to grid and can be moved with mouse. 
+The software will generated a grid of squares with given width and heigth. Tokens can be created to grid and can be moved with mouse and arrow keys. 
 
 
 ## Project
