@@ -19,10 +19,10 @@ public class TokenTest {
     @Before
     public void setUp() {
         grid = new Grid(5, 5, 100);
-        medium = new Token(grid.getSquare(2, 2), 1, new Circle());
-        large = new Token(grid.getSquare(0, 0), 2, new Circle());
-        huge = new Token(grid.getSquare(0, 0), 3, new Circle());
-        gargantuan = new Token(grid.getSquare(0, 0), 4, new Circle());
+        medium = new Token(grid.getSquare(2, 2), 1, new Circle(), Color.ALICEBLUE);
+        large = new Token(grid.getSquare(0, 0), 2, new Circle(), Color.ANTIQUEWHITE);
+        huge = new Token(grid.getSquare(0, 0), 3, new Circle(), Color.AQUA);
+        gargantuan = new Token(grid.getSquare(0, 0), 4, new Circle(), Color.AQUAMARINE);
     }
     
     @Test
@@ -33,10 +33,28 @@ public class TokenTest {
     }
     
     @Test
+    public void tokenDoesNotMoveUpOverBorder() {
+        medium.moveUp(grid);
+        medium.moveUp(grid);
+        medium.moveUp(grid);
+        Square square = medium.getPosition();
+        assertEquals(0, square.getY());
+    }
+    
+    @Test
     public void tokenMovesDown() {
         medium.moveDown(grid);
         Square square = medium.getPosition();
         assertEquals(3, square.getY());
+    }
+    
+    @Test
+    public void tokenDoesNotMoveDownOverBorder() {
+        medium.moveDown(grid);
+        medium.moveDown(grid);
+        medium.moveDown(grid);
+        Square square = medium.getPosition();
+        assertEquals(4, square.getY());
     }
     
     @Test
@@ -47,9 +65,27 @@ public class TokenTest {
     }
     
     @Test
+    public void tokenDoesNotMoveRightOverBorder() {
+        medium.moveRight(grid);
+        medium.moveRight(grid);
+        medium.moveRight(grid);
+        Square square = medium.getPosition();
+        assertEquals(4, square.getX());
+    }
+    
+    @Test
     public void tokenMovesLeft() {
         medium.moveLeft(grid);
         Square square = medium.getPosition();
         assertEquals(1, square.getX());
+    }
+    
+    @Test
+    public void tokenDoesNotMoveLeftOverBorder() {
+        medium.moveLeft(grid);
+        medium.moveLeft(grid);
+        medium.moveLeft(grid);
+        Square square = medium.getPosition();
+        assertEquals(0, square.getX());
     }
 }

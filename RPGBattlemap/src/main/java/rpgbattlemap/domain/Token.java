@@ -1,16 +1,19 @@
 package rpgbattlemap.domain;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Token {
     private Square position;
     private int size;
     private Circle shape;
+    Color colour;
 
-    public Token(Square position, int size, Circle shape) {
+    public Token(Square position, int size, Circle shape, Color colour) {
         this.position = position;
         this.size = size;
         this.shape = shape;
+        this.colour = colour;
     }
     
     public Square getPosition() {
@@ -37,9 +40,17 @@ public class Token {
         this.shape = shape;
     }
 
+    public Color getColour() {
+        return colour;
+    }
+
+    public void setColour(Color colour) {
+        this.colour = colour;
+    }
+
     public void moveUp(Grid grid) {
         Square old = this.position;
-        if (this.position.getY() - 1 > 0) {
+        if (this.position.getY() - 1 >= 0) {
             this.position = grid.getSquare(old.getY() - 1, old.getX());
         }
     }
@@ -60,7 +71,7 @@ public class Token {
     
     public void moveLeft(Grid grid) {
         Square old = this.position;
-        if (this.position.getX() - 1 > 0) {
+        if (this.position.getX() - 1 >= 0) {
             this.position = grid.getSquare(old.getY(), old.getX() - 1);
         }
     }

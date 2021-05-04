@@ -12,7 +12,8 @@ public class Square {
         this.x = x;
         this.y = y;
         this.squareSize = squareSize;
-        this.rectangle = new Rectangle(y * squareSize, x * squareSize, squareSize, squareSize);
+        this.rectangle = new Rectangle(y * squareSize, x * squareSize, 
+                squareSize, squareSize);
     }
 
     public int getX() {

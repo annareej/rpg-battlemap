@@ -1,18 +1,19 @@
 package rpgbattlemap.domain;
 
 public class Grid {
+
     private Square[][] grid;
     private int width;
     private int height;
-    
+
     public Grid(int width, int height, int squareSize) {
-        grid = new Square[height][width];        
+        grid = new Square[height][width];
         this.width = width;
         this.height = height;
-        
+
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                addSquare(i, j, new Square(i, j, squareSize));               
+                addSquare(i, j, new Square(i, j, squareSize));
             }
         }
     }
@@ -24,11 +25,11 @@ public class Grid {
     public void setGrid(Square[][] grid) {
         this.grid = grid;
     }
-    
+
     public Square getSquare(int y, int x) {
         return this.grid[y][x];
     }
-    
+
     public void addSquare(int y, int x, Square square) {
         this.grid[y][x] = square;
     }
@@ -48,7 +49,7 @@ public class Grid {
     public void setHeight(int height) {
         this.height = height;
     }
-    
+
     public Square getSquareFromMousePosition(double x, double y, int squareSize) {
         int colIndex = 0;
         if (x >= 100) {
@@ -59,16 +60,16 @@ public class Grid {
         if (y >= 100) {
             rowIndex = (int) y / squareSize;
         }
-        
+
         if (colIndex >= width) {
             colIndex = width - 1;
         }
-        
-        if(rowIndex >= height)
+
+        if (rowIndex >= height) {
             rowIndex = height - 1;
-        
-        
+        }
+
         return getSquare(colIndex, rowIndex);
     }
-    
+
 }
