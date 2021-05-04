@@ -11,4 +11,6 @@ Date | Time | Assignment
 26.4. | 3h | Token creation on mouse point.
 26.4  | 2h | Draggin token with mouse.
 27.4. | 4h | Continue token movin.
-Sum | 22h |
+03.5. | 5h | Token selection implementation.
+04.5. | 3h | Selected token functionalities.
+Sum | 30h |
