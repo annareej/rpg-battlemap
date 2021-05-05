@@ -1,5 +1,6 @@
 package rpgbattlemap.ui;
 
+import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -16,18 +17,17 @@ public class UITokenControls {
 
     public static void tokenDragged(MouseEvent e, Token token) {
         if (e.isPrimaryButtonDown()) {
-            double x = e.getSceneX() - token.getShape().getCenterX();
-            double y = e.getSceneY() - token.getShape().getCenterY();
-
-            draw(token, x, y);
-
+            Point2D newLocation = token.getShape().localToParent(new Point2D(e.getX(), e.getY()));
+            draw(token, newLocation.getX(), newLocation.getY());
         }
     }
 
     public static void tokenReleased(MouseEvent event, Token token, Grid grid, int squareSize) {
         if (event.getButton() == MouseButton.PRIMARY) {
-            Square s = grid.getSquareFromMousePosition(event.getSceneY(),
-                    event.getSceneX(), squareSize);
+            Point2D newLocation = token.getShape().localToParent(new Point2D(event.getX(), event.getY()));
+        
+            Square s = grid.getSquareFromMousePosition(newLocation.getY(),
+                    newLocation.getX(), squareSize);
             token.setPosition(s);
 
             drawToken(token, squareSize);

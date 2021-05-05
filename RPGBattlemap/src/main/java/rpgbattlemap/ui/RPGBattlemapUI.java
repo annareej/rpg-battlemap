@@ -2,7 +2,6 @@ package rpgbattlemap.ui;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -85,6 +84,7 @@ public class RPGBattlemapUI extends Application {
 
             stage.setScene(createGridScene(width, height, backgroundColour.getValue(),
                     gridColour.getValue()));
+
         });
 
         pane.add(createGridButton, 0, 5);
@@ -114,7 +114,7 @@ public class RPGBattlemapUI extends Application {
 
         Text selectedTokenHelpText = new Text("Token selected. Click grid with right mouse button to unselect. Move with mouse or arrow keys. Press DEL to remove.");
         selectedTokenHelpText.setVisible(false);
-        
+
         VBox tokenControls = new VBox(tokenHeader, tokenColourPicker, sizeDdl,
                 tokenButton, createHelpText, selectedTokenHelpText);
         tokenControls.setPadding(new Insets(10, 10, 10, 10));
@@ -132,8 +132,8 @@ public class RPGBattlemapUI extends Application {
 
         gridPane.setOnMouseClicked((MouseEvent event) -> {
             if (createTokenMode) {
-                Square square = grid.getSquareFromMousePosition(event.getSceneY(),
-                        event.getSceneX(), squareSize);
+                Square square = grid.getSquareFromMousePosition(event.getY(),
+                        event.getX(), squareSize);
                 Size size = (Size) sizeDdl.getValue();
                 drawToken(gridPane, square, size.getSize(),
                         tokenColourPicker.getValue(), selectedTokenHelpText);
@@ -144,6 +144,7 @@ public class RPGBattlemapUI extends Application {
                 selectedTokenHelpText.setVisible(false);
             }
 
+            //Enable key event listener
             gridPane.requestFocus();
         });
 
@@ -154,6 +155,8 @@ public class RPGBattlemapUI extends Application {
                 } else {
                     UITokenControls.bindArrowKeyEvents(this.selected, this.grid, e.getCode(), this.squareSize);
                 }
+                //So event doesn't scroll pane with arrow keys
+                e.consume();
             }
         });
 
@@ -209,7 +212,7 @@ public class RPGBattlemapUI extends Application {
     public void unSelectToken() {
         if (selected != null) {
             UITokenControls.unSelectToken(selected);
-            selected = null;    
+            selected = null;
         }
     }
 
