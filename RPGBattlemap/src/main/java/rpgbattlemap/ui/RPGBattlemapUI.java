@@ -79,12 +79,14 @@ public class RPGBattlemapUI extends Application {
 
         Button createGridButton = new Button("Create");
         createGridButton.setOnAction(e -> {
-            int width = Integer.parseInt(widthInput.getText());
-            int height = Integer.parseInt(heightInput.getText());
+            if (isStringInt(widthInput.getText()) && isStringInt(heightInput.getText())) {
+                int width = Integer.parseInt(widthInput.getText());
+                int height = Integer.parseInt(heightInput.getText());
+                if(width > 0 && height > 0)
+                    stage.setScene(createGridScene(width, height, backgroundColour.getValue(),
+                            gridColour.getValue()));
 
-            stage.setScene(createGridScene(width, height, backgroundColour.getValue(),
-                    gridColour.getValue()));
-
+            }
         });
 
         pane.add(createGridButton, 0, 5);
@@ -97,6 +99,15 @@ public class RPGBattlemapUI extends Application {
         Scene sizeScene = new Scene(pane);
 
         return sizeScene;
+    }
+    
+    public boolean isStringInt(String s) {
+        try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
     }
 
     public Scene createGridScene(int width, int height, Color backgroundColour, Color gridColour) {
@@ -114,7 +125,7 @@ public class RPGBattlemapUI extends Application {
 
         Text selectedTokenHelpText = new Text("Token selected. Click grid with right mouse button to unselect. Move with mouse or arrow keys. Press DEL to remove.");
         selectedTokenHelpText.setVisible(false);
-
+        
         VBox tokenControls = new VBox(tokenHeader, tokenColourPicker, sizeDdl,
                 tokenButton, createHelpText, selectedTokenHelpText);
         tokenControls.setPadding(new Insets(10, 10, 10, 10));
@@ -143,7 +154,7 @@ public class RPGBattlemapUI extends Application {
                 unSelectToken();
                 selectedTokenHelpText.setVisible(false);
             }
-
+            
             //Enable key event listener
             gridPane.requestFocus();
         });
@@ -212,7 +223,7 @@ public class RPGBattlemapUI extends Application {
     public void unSelectToken() {
         if (selected != null) {
             UITokenControls.unSelectToken(selected);
-            selected = null;
+            selected = null;    
         }
     }
 
