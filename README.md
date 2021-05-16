@@ -11,6 +11,8 @@ The software will generated a grid of squares with given width and heigth. Token
 
 [Architecture](https://github.com/annareej/rpg-battlemap/blob/master/documentation/Architecture.md)
 
+[User manual](https://github.com/annareej/rpg-battlemap/blob/master/documentation/manual.md)
+
 [Work hours](https://github.com/annareej/rpg-battlemap/blob/master/documentation/workhours.md)
 
 ## Commands
